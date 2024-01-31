@@ -133,9 +133,9 @@ RUN chmod +x /tmp/rust_setup.sh \
  && pip install --no-cache-dir -r /tmp/requirements.txt \
  && rm -f /tmp/requirements.txt /tmp/get-pip.py
 
-RUN jupyter serverextension enable --py jupyterlab --sys-prefix \
- && jupyter nbextension enable --py widgetsnbextension \
- && npm -g i tslab \
+RUN jupyter server extension enable --py jupyterlab --sys-prefix 
+RUN jupyter-notebook extension enable --py widgetsnbextension
+RUN npm -g i tslab \
  && tslab install \
  && groupadd -g 1000 "${USER_NAME}" \
  && useradd -g 1000 -l -m -s /bin/false -u 1000 "${USER_NAME}"
